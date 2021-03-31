@@ -1,0 +1,52 @@
+.Article {
+    margin: 1px;
+}
+
+.ImageContainer {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.Image {
+    opacity: 85%;
+    border-radius: 3px;
+    object-fit: none;
+    max-height: 600px;
+    width: 100%;
+}
+
+.Title {
+    font-weight: lighter;
+    text-shadow: 
+        -1px -1px 0 #212121,
+        1px -1px 0 #212121,
+        -1px 1px 0 #212121,
+        1px 1px 0 #212121;
+}
+
+.ArticleInfo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Date {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #E8E8E8;
+    text-shadow: 
+        -1px -1px 0 #212121,
+        1px -1px 0 #212121,
+        -1px 1px 0 #212121,
+        1px 1px 0 #212121;
+}
+
+.ArticleMain {
+    padding: 40px;
+    margin-left: 0;
+    width: 100%;
+    text-align: left;
+}

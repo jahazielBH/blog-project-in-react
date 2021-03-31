@@ -1,0 +1,18 @@
+.Label {
+    float: left;
+    font-size: 12px;
+    color: #6c757d;
+}
+.Image{
+    width: 100%;
+    overflow: hidden;
+}
+.SectionTitle{
+    margin: 30px;
+}
+
+.Card{
+    width: 345px;
+    display: inline-block !important;
+    margin: 15px;
+}
