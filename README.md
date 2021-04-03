@@ -1,3 +1,9 @@
+**`Documentacion`** |
+------------------- |
+[![Documentation](https://img.shields.io/badge/DOC-Requerimientos-brightgreen)](https://github.com/jahazielBH/MyBlogProject-Doc/blob/master/main.pdf) |
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
