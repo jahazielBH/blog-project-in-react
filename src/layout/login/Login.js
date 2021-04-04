@@ -3,7 +3,7 @@ import {Container} from 'reactstrap';
 import {connect} from 'react-redux';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from '../../config/firebase';
-import 'firebase/auth';
+
 
 const uiConfig = {
     signInFlow: 'popup',

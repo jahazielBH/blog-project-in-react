@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu, Collapse, NavbarToggler, Button } from 'reactstrap';
+import Image from 'react-bootstrap/Image'
 import {connect} from 'react-redux';
 import firebase from '../../../config/firebase';
 import {Link} from 'react-router-dom';
+import classes from './Heading.module.css'
 
 class Heading extends Component {
     constructor(props) {
@@ -36,6 +38,7 @@ class Heading extends Component {
                         <NavLink href="/nuevo-articulo">Nuevo Artículo</NavLink>
                     </NavItem>
                 </Nav>
+                <Image src={this.props.auth.photoURL} roundedCircle className={classes.Profile}/>
                 {
                     this.props.auth.isEmpty ?
                     '' :

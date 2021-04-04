@@ -1,13 +1,18 @@
 import React,{Component} from 'react';
 import classes from './NewArticle.module.css';
 import {Container, Row, Col, Card, CardHeader, CardBody, FormGroup, Label, Input, Button} from 'reactstrap';
+import Image from 'react-bootstrap/Image'
 import ReactQuill from 'react-quill';
 import firebase from '../../config/firebase';
 import 'react-quill/dist/quill.snow.css';
 import {v4 as uuidv4} from 'uuid';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const db = firebase.firestore()
 const storage = firebase.storage()
+toast.configure();
 
 class NewArticle extends Component {
     constructor(props){
@@ -78,8 +83,11 @@ class NewArticle extends Component {
           .add(article)
           .then(res => {
             console.log(res)
+            toast.success('Articulo Guardado', {position: toast.POSITION.BOTTOM_CENTER})
         })
-        .catch(err => console.log(err))
+        .catch(err =>
+        toast.error(err,{ position: toast.POSITION.BOTTOM_CENTER}))
+        
     }
     
     uploadImage = (e) => {
@@ -125,6 +133,7 @@ class NewArticle extends Component {
                     </Col>
                     <Col xl={3} lg={3} md={4} sm={12} xs={12}>
                         <Card className={classes.Card}>
+                            
                             <CardHeader>
                                 Configuración del artículo
                             </CardHeader>
@@ -154,7 +163,7 @@ class NewArticle extends Component {
                                     </Input>
                                     { 
                                         this.state.hasFeactureImage ? 
-                                            <img src={this.state.article.featureImage} className={classes.Image}/>:''
+                                            <Image src={this.state.article.featureImage} className={classes.Image}/>:''
                                     }
                                 </FormGroup>
                                 <FormGroup>
