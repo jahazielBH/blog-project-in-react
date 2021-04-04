@@ -18,7 +18,7 @@ const Article = (props) => {
             <CardImg
                 top
                 width="100%"
-                src={props.data.featureImage}
+                src={props.data.urlImageFile}
                 alt="Card Image"
                 className={classes.CardImage}
             />
@@ -34,7 +34,7 @@ const Article = (props) => {
                 </CardTitle>
                 <CardSubtitle className={classes.CardSubtitle}>
                     <Badge className={classes.ArticleLabel}>
-                        {props.data.category}
+                        Create by {props.data.author}
                     </Badge>
                     <Badge className={classes.createDate}>
                         {timeStampToString(props.data.createDate.seconds)}

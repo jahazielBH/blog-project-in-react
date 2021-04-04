@@ -6,8 +6,7 @@ import Login from '../login/Login';
 import ViewArticle from '../view-article/ViewArticle';
 import NewArticle from '../new-article/NewArticle';
 import { connect } from 'react-redux';
-import firebase from 'firebase';
-import 'firebase/auth';
+import firebase from 'firebase/app';
 
 const AdminOnly = (ComposedComponent, auth) => {
     class AdminOnly extends Component {

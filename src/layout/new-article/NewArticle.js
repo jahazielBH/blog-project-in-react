@@ -22,10 +22,11 @@ class NewArticle extends Component {
                 title: '',
                 content: '',
                 createDate: new Date(),
-                featureImage: '',
+                urlImageFile: '',
                 published: false,
                 lastModified: new Date(),
-                createUserID: ''
+                createUserID: '',
+                author: ''
             },
         }
     }
@@ -79,6 +80,7 @@ class NewArticle extends Component {
     saveArticle = () => {
         const article = this.state.article
         article.createUserID = this.props.auth.uid
+        article.author = this.props.auth.displayName
         db.collection('Articulo')
           .add(article)
           .then(res => {
@@ -155,7 +157,7 @@ class NewArticle extends Component {
                                                        hasFeactureImage: true,
                                                        article: {
                                                            ...this.state.article,
-                                                           featureImage: uploadState.data.link
+                                                           urlImageFile: uploadState.data.link
                                                        }
                                                    })
                                                }
@@ -163,7 +165,7 @@ class NewArticle extends Component {
                                     </Input>
                                     { 
                                         this.state.hasFeactureImage ? 
-                                            <Image src={this.state.article.featureImage} className={classes.Image}/>:''
+                                            <Image src={this.state.article.urlImageFile} className={classes.Image}/>:''
                                     }
                                 </FormGroup>
                                 <FormGroup>
