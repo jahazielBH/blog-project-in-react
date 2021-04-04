@@ -2,6 +2,11 @@
     width: 325px;
     display: inline-block !important;
     margin: 15px;
+    border-radius: .25rem!important;
+    padding: 3rem!important;
+    padding: 1.5rem!important;
+    margin-bottom: 1.5rem!important;
+    flex-direction: column!important;
 }
 
 .CardImage{
@@ -16,6 +21,7 @@
     font-size: 16px;
     height: 45px;
     text-overflow: ellipsis;
+    color: #000000!important;
 }
 
 .CardSubtitle{
@@ -25,11 +31,16 @@
 
 .createDate{
     font-size: 12px;
-    color: #0073e6;
-    background-color: #212529;
+    color: #f8f8f8;
+    background-color: #7b858e;
 }
 
 .ArticleLabel{
     padding: 5px 10px 5px 10px;
     font-size: 14px;
+    margin: 15px;
+}
+
+.Link{
+    box-sizing: border-box;
 }

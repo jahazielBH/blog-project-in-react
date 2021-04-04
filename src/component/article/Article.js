@@ -28,14 +28,16 @@ const Article = (props) => {
                     <Link to={{
                         pathname:'articulo/' + props.data.id,
                         state: {article: props.data}
-                        }}>
-                        {props.data.title}
+                        }} className={classes.Link}>
+                          {props.data.title}
                     </Link>
                 </CardTitle>
                 <CardSubtitle className={classes.CardSubtitle}>
                     <Badge className={classes.ArticleLabel}>
-                        Create by {props.data.author}
+                        Escrito por {props.data.author}
                     </Badge>
+                </CardSubtitle>
+                <CardSubtitle className={classes.CardSubtitle}>
                     <Badge className={classes.createDate}>
                         {timeStampToString(props.data.createDate.seconds)}
                     </Badge>

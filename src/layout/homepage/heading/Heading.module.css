@@ -2,4 +2,20 @@
     padding: 5px 15px;
     border-radius: 50%;
     height: 50px;
+    align-items: center!important;
+}
+
+.NavBar{
+    align-items: center!important;
+}
+
+.Button{
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    border-radius: .2rem;
+    display: flex;
+    flex-direction: column; 
+}
+.Fix{
+    margin-right: .5rem!important;
 }

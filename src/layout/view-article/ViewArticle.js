@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import classes from './ViewArticle.module.css';
 import parse from 'html-react-parser';
-import { Container } from 'reactstrap';
+import { Container, Button } from 'reactstrap';
 import firebase from '../../config/firebase';
+
+import swal from 'sweetalert';
 
 const db = firebase.firestore();
 
 class ViewArticle extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             article: {},
             isLoaded: false
         }
         console.log(this.props);
     }
 
-    componentDidMount(){
-        if(typeof this.props.location.state !== 'undefined'){
-            if(this.props.location.state.hasOwnProperty('article')){
+    componentDidMount() {
+        if (typeof this.props.location.state !== 'undefined') {
+            if (this.props.location.state.hasOwnProperty('article')) {
                 this.setState({
                     article: this.props.location.state.article
                 }, () => {
@@ -35,30 +37,59 @@ class ViewArticle extends Component {
 
     getArticleByID = (id) => {
         db.collection('Articulo')
-        .doc(id)
-        .get()
-        .then(doc => {
-            if(doc.exists){
-                this.setState({
-                    article: doc.data()
-                }, () => {
+            .doc(id)
+            .get()
+            .then(doc => {
+                if (doc.exists) {
                     this.setState({
-                        isLoaded: true
+                        article: doc.data()
+                    }, () => {
+                        this.setState({
+                            isLoaded: true
+                        })
                     })
-                })
+                } else {
+                    this.props.history.push({ pathname: '/' })
+                }
+            })
+    }
+
+    deleteArticle = () => {
+        swal({
+            title: "Eliminar",
+            text: "Estas seguro que deseas eliminar este Artículo!",
+            icon: "warning",
+            buttons: ["No", "Sí"]
+        }).then((res) => {
+            if (res) {
+                const id = this.state.article.id
+                db.collection('Articulo')
+                    .doc(id)
+                    .delete()
+                    .then(() => {
+                        console.log("Artículo eliminado")
+                    }).catch((error) => {
+                        console.log("Error al eliminar el artículo: ", error)
+                    });
+                swal({
+                    text: "El Artículo se ha borrado con éxito",
+                    icon: "success",
+                }).then(() => {
+                      window.location = "/";
+                });
             } else {
-                this.props.history.push({pathname: '/'})
+                swal({ text: "Acción abortada" });
             }
-        })
+        });
     }
 
     timeStampToString = (ts) => {
-        const date = new Date(ts*1000)
-        return date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate()
+        const date = new Date(ts * 1000)
+        return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate()
     }
 
-    render(){
-        if(this.state.isLoaded){
+    render() {
+        if (this.state.isLoaded) {
             return (
                 <Container>
                     <div className={classes.Article}>
@@ -80,8 +111,10 @@ class ViewArticle extends Component {
                             {parse(this.state.article.content)}
                         </div>
                     </div>
+                    <Button color='danger' onClick={this.deleteArticle}>
+                        Eliminar
+                    </Button>
                 </Container>
-                
             );
         } else {
             return (
@@ -90,7 +123,7 @@ class ViewArticle extends Component {
                 </div>
             );
         }
-        
+
     }
 }
 
