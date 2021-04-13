@@ -2,6 +2,9 @@
 ------------------- |
 [![Documentation](https://img.shields.io/badge/DOC-Requerimientos-brightgreen)](https://github.com/jahazielBH/MyBlogProject-Doc/blob/master/main.pdf) |
 
+**`Deploy App`** |
+------------------- |
+[![Documentation](https://img.shields.io/badge/App-Firebase-red)](https://blog-2bcc6.firebaseapp.com) |
 
 
 # Getting Started with Create React App
