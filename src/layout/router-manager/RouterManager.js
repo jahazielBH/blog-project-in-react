@@ -3,8 +3,11 @@ import {Switch, Route, withRouter } from 'react-router-dom';
 import Main from '../homepage/main/Main';
 import Heading from '../homepage/heading/Heading';
 import Login from '../login/Login';
+import LoginMongo from '../login-mongo/LoginMongo';
 import ViewArticle from '../view-article/ViewArticle';
 import NewArticle from '../new-article/NewArticle';
+import Register from '../register-mongo/Register';
+import Footer from '../homepage/footer/Footer';
 import { connect } from 'react-redux';
 import firebase from 'firebase/app';
 
@@ -72,6 +75,12 @@ class RouterManager extends Component {
                             <Route path="/login">
                                 <Login />
                             </Route>
+                            <Route path="/login-mongo">
+                                <LoginMongo />
+                            </Route>
+                            <Route path="/signup">
+                                <Register />
+                            </Route>
                             <Route path="/articulo/:id">
                                 <ViewArticle />
                             </Route>
@@ -80,7 +89,8 @@ class RouterManager extends Component {
                         </Switch>
                         : ''
                 }
-            </div>
+                <Footer />
+            </div>  
         )
     }
 }

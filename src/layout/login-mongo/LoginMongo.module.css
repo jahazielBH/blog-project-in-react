@@ -1,0 +1,10 @@
+.FormBody{
+    padding: 50px 15px 50px 15px;
+}
+
+.Form{
+    width: 325px;
+    display: inline-block !important;
+    margin: 20px;
+    border-radius: .25rem!important;
+}

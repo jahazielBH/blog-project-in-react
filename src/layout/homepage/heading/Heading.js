@@ -57,6 +57,15 @@ class Heading extends Component {
                                     Cerrar sesión
                                 </Button>
                         }
+                        {
+                            this.props.auth.isEmpty ?
+                                
+                                <Link to={{ pathname: '/signup' }} className={classes.Button}>
+                                    <Button color="warning">Registrarse</Button>
+                                </Link>
+                                :
+                                ""
+                        }
                     </Nav>
                 </Collapse>
             </Navbar>);
