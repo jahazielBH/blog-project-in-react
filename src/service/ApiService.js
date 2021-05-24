@@ -11,15 +11,15 @@ class ApiService {
             })
             .then(response => {
                 if (response.data.token) {
-                    localStorage.setItem("user", JSON.stringify(response.data.token));
+                    sessionStorage.setItem("user", JSON.stringify(response.data.token));
                 }
-
+                console.log(response);
                 return response;
             });
     }
 
     logout() {
-        localStorage.removeItem("user");
+        sessionStorage.removeItem("user");
     }
 
     register(name, pass, pass_confirm) {
@@ -31,7 +31,7 @@ class ApiService {
     }
 
     getCurrentUser() {
-        return JSON.parse(localStorage.getItem('user'));;
+        return JSON.parse(sessionStorage.getItem('user'));;
     }
 
 }

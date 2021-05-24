@@ -8,6 +8,8 @@ import ViewArticle from '../view-article/ViewArticle';
 import NewArticle from '../new-article/NewArticle';
 import Register from '../register-mongo/Register';
 import Footer from '../homepage/footer/Footer';
+import Posts from '../posts/Posts';
+import NewPosts from '../new-posts/NewPosts';
 import { connect } from 'react-redux';
 import firebase from 'firebase/app';
 
@@ -80,6 +82,12 @@ class RouterManager extends Component {
                             </Route>
                             <Route path="/signup">
                                 <Register />
+                            </Route>
+                            <Route path="/posts">
+                                <Posts />
+                            </Route>
+                            <Route path="/nueva-publicacion">
+                                <NewPosts />
                             </Route>
                             <Route path="/articulo/:id">
                                 <ViewArticle />

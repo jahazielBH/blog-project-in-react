@@ -179,7 +179,14 @@ class Register extends Component {
                   <Col>
                     <FormGroup>
                       <div className="form-group">
-                        <button className="btn btn-primary btn-block">Enviar</button>
+                        <button className="btn btn-primary btn-block">
+                          {
+                            this.state.successful && (
+                              <span className="spinner-border spinner-border-sm"></span>
+                            )
+                          }
+                          <span>Enviar</span>
+                        </button>
                       </div>
                     </FormGroup>
                   </Col>
@@ -190,6 +197,9 @@ class Register extends Component {
               {this.state.message && (
                 <Col>
                   <FormGroup>
+                    <div>
+
+                    </div>
                     <div className="form-group">
                       <div className={
                         this.state.successful
