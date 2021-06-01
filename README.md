@@ -8,11 +8,11 @@
 
 **`Deployed API Mongodb in Heroku`** |
 ------------------- |
-[![Documentation](https://img.shields.io/badge/App-Firebase-blue)](https://basilio-mongo-api.herokuapp.com/api/setup) |
+[![Documentation](https://img.shields.io/badge/App-Heroku-blue)](https://basilio-mongo-api.herokuapp.com/api/setup) |
 
 **`Api Mongo in GitHub with Node.js`** |
 ------------------- |
-[![Documentation](https://img.shields.io/badge/App-Firebase-yellow)](https://github.com/jahazielBH/API-con-NodeJS-y-MongoDB) |
+[![Documentation](https://img.shields.io/badge/App-GIT-yellow)](https://github.com/jahazielBH/API-con-NodeJS-y-MongoDB) |
 
 # Getting Started with Create React App
 
