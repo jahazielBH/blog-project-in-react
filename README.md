@@ -2,10 +2,17 @@
 ------------------- |
 [![Documentation](https://img.shields.io/badge/DOC-Requerimientos-brightgreen)](https://github.com/jahazielBH/MyBlogProject-Doc/blob/master/main.pdf) |
 
-**`Deploy App`** |
+**`Deployed App in Firebase`** |
 ------------------- |
 [![Documentation](https://img.shields.io/badge/App-Firebase-red)](https://blog-2bcc6.firebaseapp.com) |
 
+**`Deployed API Mongodb in Heroku`** |
+------------------- |
+[![Documentation](https://img.shields.io/badge/App-Firebase-blue)](https://basilio-mongo-api.herokuapp.com/api/setup) |
+
+**`Api Mongo in GitHub with Node.js`** |
+------------------- |
+[![Documentation](https://img.shields.io/badge/App-Firebase-yellow)](https://github.com/jahazielBH/API-con-NodeJS-y-MongoDB) |
 
 # Getting Started with Create React App
 
