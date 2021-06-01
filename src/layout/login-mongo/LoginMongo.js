@@ -61,6 +61,7 @@ class LoginMongo extends Component {
                         loading: response.data.success,
                         message: response.data.message
                     });
+                    window.location = '/';
                 },
                 error => {
                     this.setState({

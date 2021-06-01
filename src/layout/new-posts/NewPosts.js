@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PostsService from "../../service/PostsService";
-import { Container, Form, Col, FormGroup } from 'reactstrap';
+import { Container, Form, Col, FormGroup , Row} from 'reactstrap';
 import classes from './NewPosts.module.css';
+import swal from 'sweetalert';
 
 class NewPosts extends Component {
 
@@ -14,19 +15,58 @@ class NewPosts extends Component {
         }
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeDescription = this.onChangeDescription.bind(this);
+        this.save = this.save.bind(this);
         this.savePosts = this.savePosts.bind(this);
         this.newPosts = this.newPosts.bind(this);
     }
 
-    onChangeName(e) {
+    onChangeName = (e) => {
         this.setState({
             name: e.target.value
         });
     }
 
-    onChangeDescription(e) {
+    onChangeDescription = (e) => {
         this.setState({
             desc: e.target.value
+        });
+    }
+
+    save = () => {
+        
+        swal({
+            title: "Guardar Publicacion",
+            text: "Estas seguro que deseas guardar el contenido Actual!",
+            icon: "warning",
+            buttons: ["No", "Sí"]
+        }).then((res) => {
+            if (res) {
+                var data = {
+                    name: this.state.name,
+                    desc: this.state.desc
+                };
+                PostsService.createPosts(data)
+                    .then(response => {
+                        this.setState({
+                            name: response.data.name,
+                            desc: response.data.desc,
+                            submitted: true
+                        });
+                        console.log(response);
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    });
+                swal({
+                    title: this.state.name,
+                    text: "Guardado con éxito",
+                    icon: "success",
+                }).then(() => {
+                    window.location = "/posts";
+                });
+            } else {
+                swal({ text: "Seguir Editando" });
+            }
         });
     }
 
@@ -50,7 +90,7 @@ class NewPosts extends Component {
             });
     }
 
-    newPosts() {
+    newPosts = () => {
         this.setState({
             name: "",
             desc: "",
@@ -61,14 +101,14 @@ class NewPosts extends Component {
     render() {
         return (
             <Container className={classes.FormBody}>
-                <Form >
+                
                     <div className="submit-form">
                         {this.state.submitted ? (
                             <div>
                                 <h4>¡Envió con éxito!</h4>
                                 <button className="btn btn-success" onClick={this.newPosts}>
                                     Nueva Publicacion
-                        </button>
+                                </button>
                             </div>
                         ) : (
                                 <div className="card col-md-6 offset-md-3 offset-md-3">
@@ -107,7 +147,7 @@ class NewPosts extends Component {
                                     </Col>
                                     <Col>
                                         <FormGroup>
-                                            <button onClick={this.savePosts} className="btn btn-success">
+                                            <button onClick={this.save} className="btn btn-success">
                                                 Enviar
                                             </button>
                                         </FormGroup>
@@ -115,7 +155,7 @@ class NewPosts extends Component {
                                 </div>
                             )}
                     </div>
-                </Form>
+                
 
             </Container>
         );

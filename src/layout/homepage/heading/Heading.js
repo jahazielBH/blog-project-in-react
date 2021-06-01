@@ -9,7 +9,8 @@ import ApiService from '../../../service/ApiService';
 
 class Heading extends Component {
     constructor(props) {
-        super(props);
+        super(props)
+        this.logout = this.logout.bind(this);
         this.state = {
             isOpen: false
         }
@@ -19,13 +20,19 @@ toggle = () => {
     this.setState({ isOpen: !this.state.isOpen })
 }
 
-componentWillReceiveProps(nextProps, nextContext) {
+static getDerivedStateFromProps(nextProps, nextContext) {
     if (!nextProps.auth.isEmpty) {
-        firebase.auth().currentUser.getIdTokenResult()
+        return firebase.auth().currentUser.getIdTokenResult()
             .then(claim => {
                 console.log(claim)
             })
     }
+    return null;
+}
+
+logout(){
+    ApiService.logout();
+    window.location = '/';
 }
 
 render() {
@@ -71,10 +78,9 @@ render() {
                     
                     {
                         sessionStorage.getItem('user') ?
-
-                            <Button color="danger" onClick={() => ApiService.logout()} >
-                                Cerrar sesión
-                            </Button>
+                            <Link to={{ pathname: '/' }} className={classes.Button}  onClick={this.logout} >
+                                <Button color="danger">Cerrar sesión</Button>
+                            </Link>
                             :
                             <Link to={{ pathname: '/signup' }} className={classes.Button}>
                                 <Button color="warning">Registrarse</Button>
